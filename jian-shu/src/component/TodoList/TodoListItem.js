@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TodoListItem = ({item,deleteItem}) => {
+const TodoListItem = ({item, deleteItem}) => {
     return (
         <li className="TodoListItem">
             <span style={{marginRight: 10}}>{item}</span>

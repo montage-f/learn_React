@@ -14,6 +14,19 @@ class TodoList extends Component {
     // 如果是构造函数, rest里面有一个props参数,
     constructor(...rest) {
         super(...rest);
+        
+        this.changeInputValue = this.changeInputValue.bind(this);
+        this.submit = this.submit.bind(this);
+    }
+    
+    getTodoItem() {
+        return this.state.list.map((v, index) =>
+            <TodoListItem
+                key={index}
+                item={v}
+                deleteItem={this.deleteItem.bind(this, index)}
+            />,
+        );
     }
     
     render() {
@@ -25,47 +38,50 @@ class TodoList extends Component {
                     <input type="text"
                            id='insertArea'
                            value={this.state.inputValue}
-                           onChange={this.changeInputValue.bind(this, 2)}
+                           onChange={this.changeInputValue}
                     />
-                    <button onClick={this.submit.bind(this)}>提交</button>
+                    <button onClick={this.submit}>提交</button>
                 </div>
                 <ul>
-                    {
-                        this.state.list.map((v, index) =>
-                            <TodoListItem
-                                key={index}
-                                item={v}
-                                deleteItem={this.deleteItem.bind(this, index)}
-                            />,
-                        )
-                    }
+                    {this.getTodoItem()}
                 </ul>
             </Fragment>
         );
     }
     
     // react会将默认的event事件放到最后一个参数
-    changeInputValue(number, e) {
-        this.setState({
-            inputValue: e.target.value,
-        });
+    changeInputValue(e) {
+        // old
+        // this.setState({
+        //     inputValue: e.target.value,
+        // });
+        // new  传入函数, 将会变成异步函数
+        const value = e.target.value;
+        this.setState(() => ({inputValue: value}));
     }
     
     submit() {
-        this.setState({
-            list: [
-                ...this.state.list,
-                this.state.inputValue,
-            ],
-            inputValue: '',
+        // this.setState({
+        //     list: [
+        //         ...this.state.list,
+        //         this.state.inputValue,
+        //     ],
+        //     inputValue: '',
+        // });
+        // 第一个参数是state里面的之前的状态
+        this.setState((prevState) => {
+            return {
+                list: [...prevState.list, prevState.inputValue],
+                inputValue: '',
+            };
         });
     }
     
     deleteItem(index) {
-        const list = JSON.parse(JSON.stringify(this.state.list));
-        list.splice(index, 1);
-        this.setState({
-            list,
+        this.setState(({list}) => {
+            const copyList = [...list];
+            copyList.splice(index, 1);
+            return {list: copyList};
         });
     }
 }
