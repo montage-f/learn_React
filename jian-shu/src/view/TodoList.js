@@ -2,6 +2,9 @@ import React, {Component, Fragment} from 'react';
 import '../style/TodoList.css';
 
 import TodoListItem from '../component/TodoList/TodoListItem';
+import Clock from './Clock';
+import ActionLink from './ActionLink';
+import Toggle from './Toggle';
 
 class TodoList extends Component {
     state = {
@@ -29,6 +32,7 @@ class TodoList extends Component {
         );
     }
     
+    // 当组件的state里面的值, 或者子组件里面的props发生了变化, 那么render函数就会执行
     render() {
         return (
             // Fragment 占位符, 让外层标签隐藏
@@ -44,6 +48,9 @@ class TodoList extends Component {
                 </div>
                 <ul>
                     {this.getTodoItem()}
+                    {/*<Clock />*/}
+                    {/*<ActionLink />*/}
+                    {/*<Toggle />*/}
                 </ul>
             </Fragment>
         );
