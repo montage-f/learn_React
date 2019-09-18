@@ -1,6 +1,8 @@
 import React, {Component, Fragment} from 'react';
 import '../style/TodoList.css';
 
+import TodoListItem from '../component/TodoList/TodoListItem';
+
 class TodoList extends Component {
     state = {
         inputValue: '',
@@ -30,12 +32,11 @@ class TodoList extends Component {
                 <ul>
                     {
                         this.state.list.map((v, index) =>
-                            <li key={index}>
-                                <span style={{marginRight: 10}}>{v}</span>
-                                {/*dangerouslySetInnerHTML 用于不转译标签*/}
-                                <span dangerouslySetInnerHTML={{__html: v}} />
-                                <span onClick={this.deleteItem.bind(this, index)}>x</span>
-                            </li>,
+                            <TodoListItem
+                                key={index}
+                                item={v}
+                                deleteItem={this.deleteItem.bind(this, index)}
+                            />,
                         )
                     }
                 </ul>
