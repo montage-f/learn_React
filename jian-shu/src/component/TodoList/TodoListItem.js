@@ -1,6 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const TodoListItem = ({item, deleteItem}) => {
+    console.log(PropTypes);
     return (
         <li className="TodoListItem">
             <span style={{marginRight: 10}}>{item}</span>
@@ -10,5 +12,4 @@ const TodoListItem = ({item, deleteItem}) => {
         </li>
     );
 };
-
 export default TodoListItem;
