@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import Item from '../component/TodoList2/Item';
 import Toggle from '../component/TodoList2/Toggle';
+import ReactTransition from '../component/TodoList2/ReactTransition';
 
 class TodoList2 extends Component {
     state = {
@@ -21,6 +22,7 @@ class TodoList2 extends Component {
                     />
                     <button onClick={this.submit.bind(this)}>提交</button>
                     <Toggle />
+                    <ReactTransition />
                 </div>
                 <div className="list">
                     <ul>
@@ -32,8 +34,8 @@ class TodoList2 extends Component {
     }
     
     async componentDidMount() {
-        let {data:{data}} = await axios.post('https://www.easy-mock.com/mock/5cf8ecbb59a6db51341745b7/app/todoList');
-        this.setState(() =>({list:data}))
+        let {data: {data}} = await axios.post('https://www.easy-mock.com/mock/5cf8ecbb59a6db51341745b7/app/todoList');
+        this.setState(() => ({list: data}));
     }
     
     getTodoListItem() {
