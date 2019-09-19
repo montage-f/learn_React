@@ -21,9 +21,11 @@ const defaultState = {
     ],
 };
 
-
+// reducer 必须是纯函数,
+// 也就是说给定固定的输入, 就会有固定的输出,
+// 而且不会有任何的副作用
 export default (state = defaultState, action) => {
-    const {type, value, index} = action;
+    const {type, value} = action;
     const newState = JSON.parse(JSON.stringify(state));
     if (type === CHANGE_INPUT_VALUE) {
         newState.inputValue = value;
