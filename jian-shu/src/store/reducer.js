@@ -21,5 +21,18 @@ const defaultState = {
 
 
 export default (state = defaultState, action) => {
+    const {type, value, index} = action;
+    const newState = JSON.parse(JSON.stringify(state));
+    if (type === 'change_input_value') {
+        newState.inputValue = value;
+        return newState;
+    } else if (type === 'add_todo_item') {
+        newState.list.push({title: newState.inputValue});
+        newState.inputValue = '';
+        return newState;
+    } else if (type === 'delete_todo_item') {
+        newState.list.splice(value, 1);
+        return newState;
+    }
     return state;
 }

@@ -10,6 +10,8 @@ class AntDTodoList extends Component {
         super(props);
         // 将store里面的数据, 赋值到当前组件内的state上面
         this.state = store.getState();
+        // 监听store里面的数据, 只要是数据发生了变化, 就会执行后面这个函数
+        store.subscribe(this.handleStoreChange.bind(this));
     }
     
     render() {
@@ -19,14 +21,21 @@ class AntDTodoList extends Component {
                     <Input
                         placeholder="todo info"
                         value={this.state.inputValue}
+                        onChange={this.handleInputChange.bind(this)}
                     />
-                    <Button type="primary">提交</Button>
+                    <Button type="primary"
+                            onClick={this.handleBtnClick.bind(this)}
+                    >
+                        提交
+                    </Button>
                 </div>
                 <div className="listMessage">
                     <List
                         dataSource={this.state.list}
-                        renderItem={({title}) => (
-                            <List.Item>
+                        renderItem={({title}, index) => (
+                            <List.Item
+                                onClick={this.handleItemClick.bind(this, index)}
+                            >
                                 {title}
                             </List.Item>
                         )}
@@ -34,6 +43,33 @@ class AntDTodoList extends Component {
                 </div>
             </div>
         );
+    }
+    
+    handleInputChange(e) {
+        const action = {
+            type: 'change_input_value',
+            value: e.target.value
+        };
+        store.dispatch(action);
+    }
+    
+    handleBtnClick() {
+        const action = {
+            type: 'add_todo_item',
+        };
+        store.dispatch(action);
+    }
+    
+    handleItemClick(index) {
+        const action = {
+            type: 'delete_todo_item',
+            value: index
+        };
+        store.dispatch(action);
+    }
+    
+    handleStoreChange() {
+        this.setState(store.getState());
     }
 }
 
