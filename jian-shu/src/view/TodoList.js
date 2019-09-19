@@ -6,6 +6,8 @@ import Clock from './Clock';
 import ActionLink from './ActionLink';
 import Toggle from './Toggle';
 
+const ref = React.createRef();
+
 class TodoList extends Component {
     state = {
         inputValue: '',
@@ -25,6 +27,7 @@ class TodoList extends Component {
     getTodoItem() {
         return this.state.list.map((v, index) =>
             <TodoListItem
+                ref={(TodoListItem) => this.TodoListItem = TodoListItem}
                 key={index}
                 item={v}
                 deleteItem={this.deleteItem.bind(this, index)}
@@ -45,6 +48,8 @@ class TodoList extends Component {
                            onChange={this.changeInputValue}
                     />
                     <button onClick={this.submit}>提交</button>
+                    <div ref={(div) => this.div = div}>ref的第一种方法拿到我</div>
+                    <div ref={ref}>ref的第二种方法拿到我</div>
                 </div>
                 <ul>
                     {this.getTodoItem()}
@@ -67,7 +72,7 @@ class TodoList extends Component {
         this.setState(() => ({inputValue: value}));
     }
     
-    submit() {
+     submit() {
         // this.setState({
         //     list: [
         //         ...this.state.list,
@@ -76,12 +81,13 @@ class TodoList extends Component {
         //     inputValue: '',
         // });
         // 第一个参数是state里面的之前的状态
-        this.setState((prevState) => {
+         this.setState((prevState) => {
             return {
                 list: [...prevState.list, prevState.inputValue],
                 inputValue: '',
             };
         });
+        console.log(222);
     }
     
     deleteItem(index) {
