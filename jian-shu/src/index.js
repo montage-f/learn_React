@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import "antd/dist/antd.css";
 import './index.css';
-import TodoList2 from './view/TodoList2';
+import AntDTodoList from './view/AntDTodoList';
 
-ReactDOM.render(<TodoList2 />, document.getElementById('root'));
+ReactDOM.render(<AntDTodoList />, document.getElementById('root'));
