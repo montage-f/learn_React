@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import {Input, Button, List} from 'antd';
 import '../style/AntDTodoList/AntDTodoList.css';
-
+import AntDTodoListUi from '../component/AntDTodoListUI';
 // 引入store
 import store from '../store';
 import {getInputChangeAction, getAddItemAction, getDeleteItemAction} from '../store/actionCreators';
 
+// 容器组件
 class AntDTodoList extends Component {
     constructor(props) {
         super(props);
@@ -17,32 +17,13 @@ class AntDTodoList extends Component {
     
     render() {
         return (
-            <div className="AntDTodoList">
-                <div className="writeInfo">
-                    <Input
-                        placeholder="todo info"
-                        value={this.state.inputValue}
-                        onChange={this.handleInputChange.bind(this)}
-                    />
-                    <Button type="primary"
-                            onClick={this.handleBtnClick.bind(this)}
-                    >
-                        提交
-                    </Button>
-                </div>
-                <div className="listMessage">
-                    <List
-                        dataSource={this.state.list}
-                        renderItem={({title}, index) => (
-                            <List.Item
-                                onClick={this.handleItemClick.bind(this, index)}
-                            >
-                                {title}
-                            </List.Item>
-                        )}
-                    />
-                </div>
-            </div>
+            <AntDTodoListUi
+                inputValue={this.state.inputValue}
+                list={this.state.list}
+                handleInputChange={this.handleInputChange.bind(this)}
+                handleBtnClick={this.handleBtnClick.bind(this)}
+                handleItemClick={this.handleItemClick}
+            />
         );
     }
     

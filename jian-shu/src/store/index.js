@@ -6,6 +6,8 @@ import reducer from './reducer';
 
 const store = createStore(
     reducer,
+    // 如果没有redux调试工具, 记得删除这一行
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
 );
 
 
