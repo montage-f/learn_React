@@ -3,12 +3,7 @@ import '../style/AntDTodoList/AntDTodoList.css';
 import AntDTodoListUI from '../component/AntDTodoListUI';
 // 引入store
 import store from '../store';
-import {
-    getInputChangeAction,
-    getAddItemAction,
-    getDeleteItemAction,
-    getTodoList,
-} from '../store/actionCreators';
+import {getInputChangeAction, getAddItemAction, getDeleteItemAction, getInitListAction} from '../store/actionCreators';
 
 // 容器组件
 class AntDTodoList extends Component {
@@ -33,7 +28,7 @@ class AntDTodoList extends Component {
     }
     
     componentDidMount() {
-        const action = getTodoList();
+        const action = getInitListAction();
         store.dispatch(action);
     }
     

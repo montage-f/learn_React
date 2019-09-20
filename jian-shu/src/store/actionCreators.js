@@ -1,8 +1,13 @@
 /**
  * Created by montage_fz on 2019-09-20
  */
-import {CHANGE_INPUT_VALUE, ADD_TODO_ITEM, DELETE_TODO_ITEM, INIT_LIST_ACTION} from './actionTypes';
-import axios from 'axios';
+import {
+    CHANGE_INPUT_VALUE,
+    ADD_TODO_ITEM,
+    DELETE_TODO_ITEM,
+    INIT_LIST_ACTION,
+    GET_INIT_LIST
+} from './actionTypes';
 
 export const getInputChangeAction = (value) => ({
     type: CHANGE_INPUT_VALUE,
@@ -20,11 +25,6 @@ export const initListAction = (data) => ({
     value: data,
 });
 
-
-export const getTodoList = () => {
-    return async (dispatch) => {
-        let {data} = await axios.get('../../mock/todoList.json');
-        const action = initListAction(data);
-        dispatch(action);
-    };
-};
+export const getInitListAction = () => ({
+    type:GET_INIT_LIST
+});
