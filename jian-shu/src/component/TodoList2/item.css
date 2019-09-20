@@ -1,8 +1,0 @@
-.item span {
-    margin-right: 20px;
-}
-
-.item span:hover {
-    color: red;
-    cursor: pointer;
-}

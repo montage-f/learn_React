@@ -1,55 +1,48 @@
 import React, {Component} from 'react';
-import '../style/AntDTodoList/AntDTodoList.css';
-import AntDTodoListUI from '../component/AntDTodoListUI';
-// 引入store
-import store from '../store';
-import {getInputChangeAction, getAddItemAction, getDeleteItemAction, getInitListAction} from '../store/actionCreators';
+import {connect} from 'react-redux';
 
 // 容器组件
 class AntDTodoList extends Component {
-    constructor(props) {
-        super(props);
-        // 将store里面的数据, 赋值到当前组件内的state上面
-        this.state = store.getState();
-        // 监听store里面的数据, 只要是数据发生了变化, 就会执行后面这个函数
-        store.subscribe(this.handleStoreChange.bind(this));
-    }
-    
     render() {
         return (
-            <AntDTodoListUI
-                inputValue={this.state.inputValue}
-                list={this.state.list}
-                handleInputChange={this.handleInputChange.bind(this)}
-                handleBtnClick={this.handleBtnClick.bind(this)}
-                handleItemClick={this.handleItemClick}
-            />
+            <div className="AntDTodoList">
+                <div>
+                    <input type="text"
+                           value={this.props.inputValue}
+                           onChange={this.props.handleChangeInput}
+                    />
+                    <button onClick={this.handleClick.bind(this)}>提交</button>
+                </div>
+                <div>
+                    <ul>
+                        <li>react-redux</li>
+                    </ul>
+                </div>
+            </div>
         );
     }
     
-    componentDidMount() {
-        const action = getInitListAction();
-        store.dispatch(action);
-    }
     
-    handleInputChange(e) {
-        const action = getInputChangeAction(e.target.value);
-        store.dispatch(action);
-    }
+    handleClick() {
     
-    handleBtnClick() {
-        const action = getAddItemAction();
-        store.dispatch(action);
-    }
-    
-    handleItemClick(index) {
-        const action = getDeleteItemAction(index);
-        store.dispatch(action);
-    }
-    
-    handleStoreChange() {
-        this.setState(store.getState());
     }
 }
 
-export default AntDTodoList;
+const mapStateToProps = (state) => {
+    return {
+        inputValue: state.inputValue,
+    };
+};
+const mapDispatchToProps = (dispatch) => {
+    return {
+        handleChangeInput(e) {
+            const action = {
+                type: 'change_input_value',
+                value: e.target.value,
+            };
+            dispatch(action);
+        },
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AntDTodoList);
