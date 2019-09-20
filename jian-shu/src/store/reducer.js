@@ -1,24 +1,11 @@
 /**
  * Created by MonTage_fz on 2019/9/19
  */
-import {CHANGE_INPUT_VALUE, ADD_TODO_ITEM, DELETE_TODO_ITEM} from './actionTypes';
+import {CHANGE_INPUT_VALUE, ADD_TODO_ITEM, DELETE_TODO_ITEM, INIT_LIST_ACTION} from './actionTypes';
 
 const defaultState = {
-    inputValue: 'hello',
-    list: [
-        {
-            title: 'Ant Design Title 1',
-        },
-        {
-            title: 'Ant Design Title 2',
-        },
-        {
-            title: 'Ant Design Title 3',
-        },
-        {
-            title: 'Ant Design Title 4',
-        },
-    ],
+    inputValue: '',
+    list: [],
 };
 
 // reducer 必须是纯函数,
@@ -36,6 +23,9 @@ export default (state = defaultState, action) => {
         return newState;
     } else if (type === DELETE_TODO_ITEM) {
         newState.list.splice(value, 1);
+        return newState;
+    } else if (type === INIT_LIST_ACTION) {
+        newState.list = value;
         return newState;
     }
     return state;

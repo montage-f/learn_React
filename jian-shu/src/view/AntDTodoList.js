@@ -1,9 +1,14 @@
 import React, {Component} from 'react';
 import '../style/AntDTodoList/AntDTodoList.css';
-import AntDTodoListUi from '../component/AntDTodoListUI';
+import AntDTodoListUI from '../component/AntDTodoListUI';
 // 引入store
 import store from '../store';
-import {getInputChangeAction, getAddItemAction, getDeleteItemAction} from '../store/actionCreators';
+import {
+    getInputChangeAction,
+    getAddItemAction,
+    getDeleteItemAction,
+    getTodoList,
+} from '../store/actionCreators';
 
 // 容器组件
 class AntDTodoList extends Component {
@@ -17,7 +22,7 @@ class AntDTodoList extends Component {
     
     render() {
         return (
-            <AntDTodoListUi
+            <AntDTodoListUI
                 inputValue={this.state.inputValue}
                 list={this.state.list}
                 handleInputChange={this.handleInputChange.bind(this)}
@@ -25,6 +30,11 @@ class AntDTodoList extends Component {
                 handleItemClick={this.handleItemClick}
             />
         );
+    }
+    
+    componentDidMount() {
+        const action = getTodoList();
+        store.dispatch(action);
     }
     
     handleInputChange(e) {
