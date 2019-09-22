@@ -49,8 +49,10 @@ const index = (props) =>
     </HeaderWrapper>;
 
 const mapStateToProps = (state) => {
+    // state.get('header').get('isFocus')
     return {
-        isFocus: state.header.get('isFocus'),
+        // 与上面的方法相同
+        isFocus: state.getIn(['header', 'isFocus']),
     };
 };
 const mapDispatchToProps = (dispatch) => {
