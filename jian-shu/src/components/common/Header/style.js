@@ -118,12 +118,15 @@ export const SearchInfoTitle = styled.div`
         float:right;
         margin-right:10px;
         transition:all 0.5s ease-out;
+        transform-origin: center center;
         transform: rotate(${props => props.degree}deg);
     }
 `;
 export const SearchInfoSwitch = styled.span`
     float:right;
     font-size:12px;
+    cursor:pointer;
+
 `;
 export const SearchInfoMessage = styled.div`
     overflow:hidden;

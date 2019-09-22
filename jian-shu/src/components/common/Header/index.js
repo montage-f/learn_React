@@ -39,7 +39,7 @@ class index extends Component {
                         >
                             <NavSearch
                                 className={this.props.isFocus ? 'focus' : ''}
-                                onFocus={this.props.handleFocus}
+                                onFocus={() => this.props.handleFocus(this.props.list)}
                                 onBlur={this.props.handleBlur}
                             />
                         </CSSTransition>
@@ -76,13 +76,12 @@ const GetSearchInfoArea = ({
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}>
             <SearchInfoTitle degree={degree}>
-                热门搜索{degree}
+                热门搜索
                 <SearchInfoSwitch
-                    
                     onClick={() => handleChangeInfo(page, totalPage)}>
                     换一批
                 </SearchInfoSwitch>
-                <i  className="iconfont">&#xe600;</i>
+                <i className="iconfont">&#xe600;</i>
             </SearchInfoTitle>
             <SearchInfoMessage>
                 {
@@ -113,8 +112,8 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
     return {
-        handleFocus() {
-            dispatch(actionCreators.getList());
+        handleFocus(list) {
+            (list.size === 0) && dispatch(actionCreators.getList());
             dispatch(actionCreators.getHandleFocusAction());
         },
         handleBlur() {
@@ -128,7 +127,7 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(actionCreators.mouseLeave());
         },
         handleChangeInfo(page) {
-            dispatch(actionCreators.changeDegree(page * 360));
+            dispatch(actionCreators.changeDegree((page + 1) * 360));
             dispatch(actionCreators.handleChangeInfo(page + 1));
         },
     };
