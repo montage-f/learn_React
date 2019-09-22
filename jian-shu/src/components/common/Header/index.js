@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {CSSTransition} from 'react-transition-group';
 import {
     HeaderWrapper,
     Logo,
@@ -7,10 +8,14 @@ import {
     NavSearchWrapper,
     NavSearch,
     Addition,
-    Button
+    Button,
 } from './style';
 
 class index extends Component {
+    state = {
+        isFocus: false,
+    };
+    
     render() {
         return (
             <HeaderWrapper>
@@ -22,9 +27,20 @@ class index extends Component {
                     <NavItem className="right">
                         <span className="iconfont">&#xe636;</span>
                     </NavItem>
-                    <NavSearchWrapper>
-                        <NavSearch />
-                        <span className="iconfont">&#xe624;</span>
+                    <NavSearchWrapper
+                        className={this.state.isFocus ? 'focus' : ''}>
+                        <CSSTransition
+                            in={this.state.isFocus}
+                            timeout={500}
+                            classNames="slide"
+                        >
+                            <NavSearch
+                                className={this.state.isFocus ? 'focus' : ''}
+                                onFocus={this.handleFocus.bind(this)}
+                                onBlur={this.handleBlur.bind(this)}
+                            />
+                        </CSSTransition>
+                        <span className={this.state.isFocus ? 'focus iconfont' : 'iconfont'}>&#xe624;</span>
                     </NavSearchWrapper>
                     <Addition>
                         <Button className="writing">
@@ -36,6 +52,18 @@ class index extends Component {
                 </Nav>
             </HeaderWrapper>
         );
+    }
+    
+    handleFocus() {
+        this.setState({
+            isFocus: true,
+        });
+    }
+    
+    handleBlur() {
+        this.setState({
+            isFocus: false,
+        });
     }
 }
 
