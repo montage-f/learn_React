@@ -128,7 +128,7 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(actionCreators.mouseLeave());
         },
         handleChangeInfo(page) {
-            dispatch(actionCreators.changeDegree(page * 180));
+            dispatch(actionCreators.changeDegree(page * 360));
             dispatch(actionCreators.handleChangeInfo(page + 1));
         },
     };
