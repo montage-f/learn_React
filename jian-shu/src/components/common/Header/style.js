@@ -51,7 +51,7 @@ export const NavSearchWrapper = styled.div`
     &.focus{
         width: 300px;
     }
-    .iconfont{
+    &>.iconfont{
         position: absolute;
         right: 5px;
         bottom:4px;
@@ -114,6 +114,12 @@ export const SearchInfoTitle = styled.div`
     line-height:20px;
     font-size:14px;
     color:#969696;
+    &>.iconfont{
+        float:right;
+        margin-right:10px;
+        transition:all 0.5s ease-out;
+        transform: rotate(${props => props.degree}deg);
+    }
 `;
 export const SearchInfoSwitch = styled.span`
     float:right;

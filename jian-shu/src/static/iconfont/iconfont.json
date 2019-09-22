@@ -6,6 +6,13 @@
   "description": "简书Iconfont",
   "glyphs": [
     {
+      "icon_id": "98045",
+      "name": "loading",
+      "font_class": "loading",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
       "icon_id": "1621077",
       "name": "Aa",
       "font_class": "Aa",
