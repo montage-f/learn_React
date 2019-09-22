@@ -51,18 +51,6 @@ export const NavSearchWrapper = styled.div`
     &.focus{
         width: 300px;
     }
-    .slide-enter{
-        transition:all .5s ease-out;
-    }
-    .slide-enter-active{
-        width: 300px;
-    }
-    .slide-exit{
-        transition:all .5s ease-out;
-    }
-    .slide-exit-active{
-        width:160px;
-    }
     .iconfont{
         position: absolute;
         right: 5px;
@@ -97,6 +85,19 @@ export const NavSearch = styled.input.attrs({
     }
     &.focus{
         width: 300px;
+    }
+    
+    &.slide-enter{
+        transition:all .5s ease-out;
+    }
+    &.slide-enter-active{
+        width: 300px;
+    }
+    &.slide-exit{
+        transition:all .5s ease-out;
+    }
+    &.slide-exit-active{
+        width:160px;
     }
 `;
 export const Addition = styled.div`
