@@ -11,7 +11,13 @@ import {
     NavSearch,
     Addition,
     Button,
+    SearchInfo,
+    SearchInfoTitle,
+    SearchInfoSwitch,
+    SearchInfoMessage,
+    SearchInfoItem,
 } from './style';
+
 
 const index = (props) =>
     <HeaderWrapper>
@@ -37,6 +43,7 @@ const index = (props) =>
                     />
                 </CSSTransition>
                 <span className={props.isFocus ? 'focus iconfont' : 'iconfont'}>&#xe624;</span>
+                <GetSearchInfoArea isShow={props.isFocus} />
             </NavSearchWrapper>
             <Addition>
                 <Button className="writing">
@@ -47,6 +54,32 @@ const index = (props) =>
             </Addition>
         </Nav>
     </HeaderWrapper>;
+
+
+const GetSearchInfoArea = ({isShow}) => {
+    if (!isShow) return null;
+    return (
+        <SearchInfo>
+            <SearchInfoTitle>
+                热门搜索
+                <SearchInfoSwitch>
+                    换一批
+                </SearchInfoSwitch>
+            </SearchInfoTitle>
+            <SearchInfoMessage>
+                <SearchInfoItem>教育</SearchInfoItem>
+                <SearchInfoItem>教育</SearchInfoItem>
+                <SearchInfoItem>教育</SearchInfoItem>
+                <SearchInfoItem>教育</SearchInfoItem>
+                <SearchInfoItem>教育</SearchInfoItem>
+                <SearchInfoItem>教育</SearchInfoItem>
+                <SearchInfoItem>教育</SearchInfoItem>
+                <SearchInfoItem>教育</SearchInfoItem>
+                <SearchInfoItem>教育</SearchInfoItem>
+            </SearchInfoMessage>
+        </SearchInfo>
+    );
+};
 
 const mapStateToProps = (state) => {
     // state.get('header').get('isFocus')
