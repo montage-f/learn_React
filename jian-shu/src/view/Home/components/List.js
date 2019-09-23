@@ -32,6 +32,7 @@ class index extends Component {
                         </List.Item>,
                     )
                 }
+                <List.More onClick={this.props.getMoreList}>更多内容</List.More>
             </Fragment>
         );
     }
@@ -43,6 +44,10 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
     getList() {
         const action = actionCreator.getList();
+        dispatch(action);
+    },
+    getMoreList() {
+        const action = actionCreator.getMoreList();
         dispatch(action);
     },
     

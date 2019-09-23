@@ -7,7 +7,7 @@ import * as Types from './constants';
 
 export const getTopicList = () => {
     return async (dispatch) => {
-        let {data} = await axios.get('/api/topicList.json');
+        const {data} = await axios.get('/api/topicList.json');
         const action = {
             type: Types.GET_TOPIC_LIST,
             value: fromJS(data),
@@ -18,7 +18,7 @@ export const getTopicList = () => {
 
 export const getList = () => {
     return async (dispatch) => {
-        let {data} = await axios.get('/api/List.json');
+        const {data} = await axios.get('/api/List.json');
         const action = {
             type: Types.GET_LIST,
             value: fromJS(data),
@@ -28,7 +28,7 @@ export const getList = () => {
 };
 export const getRecommendList = () => {
     return async (dispatch) => {
-        let {data} = await axios.get('/api/recommendList.json');
+        const {data} = await axios.get('/api/recommendList.json');
         const action = {
             type: Types.GET_RECOMMEND_LIST,
             value: fromJS(data),
@@ -38,12 +38,21 @@ export const getRecommendList = () => {
 };
 export const getWriterList = () => {
     return async (dispatch) => {
-        let {data} = await axios.get('/api/writerList.json');
+        const {data} = await axios.get('/api/writerList.json');
         const action = {
             type: Types.GET_WRITER_LIST,
             value: fromJS(data),
         };
         dispatch(action);
+    };
+};
+export const getMoreList = () => {
+    return async (dispatch) => {
+        const {data}=await axios.get('')
+        const action={
+            type:'',
+            
+        }
     };
 };
 
