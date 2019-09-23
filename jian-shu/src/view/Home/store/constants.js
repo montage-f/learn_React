@@ -5,3 +5,4 @@ export const GET_TOPIC_LIST = 'get_topic_list';
 export const GET_LIST = 'get_list';
 export const GET_RECOMMEND_LIST = 'get_recommend_list';
 export const GET_WRITER_LIST = 'get_writer_list';
+export const ADD_LIST_ITEM = 'add_list_item';

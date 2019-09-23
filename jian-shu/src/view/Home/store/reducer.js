@@ -22,6 +22,8 @@ export default (state = defaultState, action) => {
             return state.set('recommendList', value);
         case Types.GET_WRITER_LIST:
             return state.set('writerList', value);
+        case Types.ADD_LIST_ITEM:
+            return state.set('list', value);
         default:
             return state;
     }
