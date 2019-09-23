@@ -46,12 +46,12 @@ export const getWriterList = () => {
         dispatch(action);
     };
 };
-export const getMoreList = (lodList) => {
+export const getMoreList = () => {
     return async (dispatch) => {
         const {data} = await axios.get('/api/List.json');
         const action = {
             type: Types.ADD_LIST_ITEM,
-            value: fromJS([...data, ...lodList]),
+            value: fromJS(data),
         };
         dispatch(action);
     };

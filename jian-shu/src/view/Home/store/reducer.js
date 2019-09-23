@@ -23,7 +23,7 @@ export default (state = defaultState, action) => {
         case Types.GET_WRITER_LIST:
             return state.set('writerList', value);
         case Types.ADD_LIST_ITEM:
-            return state.set('list', value);
+            return state.set('list', state.get('list').concat(value));
         default:
             return state;
     }
