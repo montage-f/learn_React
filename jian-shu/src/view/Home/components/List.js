@@ -1,8 +1,13 @@
 import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
 import {List} from '../styles';
+import {actionCreator} from '../store';
 
 class index extends Component {
+    componentDidMount() {
+        console.log('list');
+        this.props.getList();
+    }
     
     render() {
         const {list} = this.props;
@@ -35,6 +40,12 @@ class index extends Component {
 const mapStateToProps = (state) => ({
     list: state.getIn(['home', 'list']),
 });
-const mapDispatchToProps = (dispatch) => ({});
+const mapDispatchToProps = (dispatch) => ({
+    getList() {
+        const action = actionCreator.getList();
+        dispatch(action);
+    },
+    
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(index);

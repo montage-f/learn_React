@@ -10,6 +10,10 @@ import {
 } from './style';
 
 class index extends Component {
+    componentDidMount() {
+        console.log('index');
+    }
+    
     render() {
         return (
             <HomeWrapper>

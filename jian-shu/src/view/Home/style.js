@@ -20,5 +20,6 @@ export const HomeLeft = styled.div`
 `;
 export const HomeRight = styled.div`
     float:right;
-    width:245px;
+    padding-top:30px;
+    width:280px;
 `;

@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "title": "社会热点",
+    "imgUrl": "//img.alicdn.com/tfs/TB1qpwlQXXXXXcCXXXXXXXXXXXX-256-256.png_60x60.jpg_.webp"
+  },
+  {
+    "id": 2,
+    "title": "天猫",
+    "imgUrl": "//img.alicdn.com/tps/i3/TB1DGkJJFXXXXaZXFXX07tlTXXX-200-200.png_60x60.jpg_.webp"
+  },
+  {
+    "id": 3,
+    "title": "聚划算",
+    "imgUrl": "//img.alicdn.com/tps/i4/TB1CKSgIpXXXXccXXXX07tlTXXX-200-200.png_60x60.jpg_.webp"
+  }
+]

@@ -1,8 +1,14 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Writer} from '../styles';
+import {actionCreator} from '../store';
 
 class index extends Component {
+    componentDidMount() {
+        console.log('write');
+        this.props.getList();
+    }
+    
     render() {
         const {list} = this.props;
         return (
@@ -39,6 +45,10 @@ class index extends Component {
 const mapStateToProps = (state) => ({
     list: state.getIn(['home', 'writerList']),
 });
-const mapDispatchToProps = () => ({});
+const mapDispatchToProps = (dispatch) => ({
+    getList() {
+        dispatch(actionCreator.getWriterList());
+    },
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(index);
