@@ -3,6 +3,8 @@
  */
 import * as Topic from './Topic';
 import * as List from './List';
+import * as Recommend from './Recommend';
+import * as Writer from './Writer';
 
 
-export {Topic, List};
+export {Topic, List, Recommend, Writer};

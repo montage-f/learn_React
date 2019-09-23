@@ -1,17 +1,25 @@
 import React, {Component} from 'react';
+import {Recommend} from '../styles';
+import rightRecommend from '../../../image/right-recommend.png';
 
-class Recommend extends Component {
-    constructor(props) {
-        super(props);
-    }
+class index extends Component {
     
     render() {
         return (
-            <div className="Recommend">
-                recommend
-            </div>
+            <Recommend.Container className="Recommend">
+                {
+                    Array.from({length: 4}).map((item, index) =>
+                        <Recommend.Item key={index}>
+                            <a href="/">
+                                <img src={rightRecommend}
+                                     alt="" />
+                            </a>
+                        </Recommend.Item>,
+                    )
+                }
+            </Recommend.Container>
         );
     }
 }
 
-export default Recommend;
+export default index;

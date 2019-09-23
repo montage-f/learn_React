@@ -21,7 +21,13 @@ const defaultState = fromJS({
         id: 1,
         title: '《二十岁的年纪，做八十岁想起来都会嘴角上扬的事》',
         info: '二十岁出头，正好处在一个尴尬的年纪。似乎看透了生活，实质却依旧单纯；似乎应有尽有，实质却一无所有；内心身怀雄心壮志，却又不得不脚踏实地。 身处二...',
-        imgUrl:'//img.alicdn.com/tfscom/i1/28306811/TB2qvcteYwTMeJjSszfXXXbtFXa_!!28306811.jpg_180x180xzq90.jpg_.webp'
+        imgUrl: '//img.alicdn.com/tfscom/i1/28306811/TB2qvcteYwTMeJjSszfXXXbtFXa_!!28306811.jpg_180x180xzq90.jpg_.webp',
+    }],
+    writerList: [{
+        id: 1,
+        href: '/u/0f438ff0a55f?utm_source=desktop&utm_medium=index-users',
+        title: '茶点故事',
+        info: '写了564.8k字 · 14.2k喜欢',
     }],
     
 });
