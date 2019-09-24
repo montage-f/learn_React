@@ -32,7 +32,7 @@ class index extends Component {
                         </List.Item>,
                     )
                 }
-                <List.More onClick={this.props.getMoreList}>更多内容</List.More>
+                <List.More onClick={() =>this.props.getMoreList()}>更多内容</List.More>
             </Fragment>
         );
     }
