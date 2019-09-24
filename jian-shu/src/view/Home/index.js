@@ -7,12 +7,10 @@ import {
     HomeWrapper,
     HomeLeft,
     HomeRight,
+    BackTop,
 } from './style';
 
 class index extends Component {
-    componentDidMount() {
-        console.log('index');
-    }
     
     render() {
         return (
@@ -29,8 +27,19 @@ class index extends Component {
                     <Recommend />
                     <Writer />
                 </HomeRight>
+                <BackTop onClick={this.handleScrollTop}>
+                    回到顶部
+                </BackTop>
             </HomeWrapper>
         );
+    }
+    
+    componentDidMount() {
+        console.log('index');
+    }
+    
+    handleScrollTop() {
+        window.scrollTo(0,0)
     }
 }
 
